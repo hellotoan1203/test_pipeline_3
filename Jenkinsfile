@@ -21,11 +21,11 @@ pipeline {
         }
       }
       steps {
-        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
+        //withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
           sh '''
             aws s3 ls
           '''
-        }
+        //}
         
       }
     }
