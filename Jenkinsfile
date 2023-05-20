@@ -15,7 +15,7 @@ pipeline {
     stage('Push') {
       agent {
         dockerfile {
-          dockerfile 'aws.Dockerfile'
+          filename 'aws.Dockerfile'
         }
       }
       steps {
