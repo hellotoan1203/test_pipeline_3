@@ -13,19 +13,19 @@ pipeline {
       }
     }
     stage('Push') {
-      agent {
-        docker {
-          alwaysPull true
-          image 'amazon/aws-cli:latest'
-          args '-u root:root'
-        }
-      }
+      // agent {
+      //   docker {
+      //     alwaysPull true
+      //     image 'amazon/aws-cli:latest'
+      //     args '-u root:root'
+      //   }
+      // }
       steps {
-        //withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
+        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'jenkins-aws-credential', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
           sh '''
             aws s3 ls
           '''
-        //}
+        }
         
       }
     }
